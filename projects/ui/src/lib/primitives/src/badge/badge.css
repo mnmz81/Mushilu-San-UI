@@ -1,0 +1,97 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--mui-radius-full);
+  border: 1px solid transparent;
+  font-family: var(--mui-font-sans);
+  font-weight: var(--mui-font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ----------------------------------------------------------------
+   Sizes
+   ---------------------------------------------------------------- */
+:host([data-size="sm"]),
+:host(:not([data-size])[data-size="sm"]) {
+  font-size: var(--mui-font-size-xs);
+  padding: 2px var(--mui-space-2);
+  gap: var(--mui-space-1);
+}
+
+:host([data-size="md"]),
+:host(:not([data-size])) {
+  font-size: var(--mui-font-size-xs);
+  padding: var(--mui-space-1) var(--mui-space-2);
+  gap: var(--mui-space-1);
+}
+
+:host([data-size="lg"]) {
+  font-size: var(--mui-font-size-sm);
+  padding: var(--mui-space-1) var(--mui-space-3);
+  gap: var(--mui-space-2);
+}
+
+/* ----------------------------------------------------------------
+   Variants
+   ---------------------------------------------------------------- */
+:host([data-variant="default"]),
+:host(:not([data-variant])) {
+  background-color: var(--mui-color-surface);
+  color: var(--mui-color-text-muted);
+  border-color: var(--mui-color-border);
+}
+
+:host([data-variant="primary"]) {
+  background-color: var(--mui-color-primary);
+  color: var(--mui-color-primary-text);
+}
+
+:host([data-variant="success"]) {
+  background-color: var(--mui-color-success-subtle);
+  color: var(--mui-color-success);
+}
+
+:host([data-variant="warning"]) {
+  background-color: var(--mui-color-warning-subtle);
+  color: var(--mui-color-warning);
+}
+
+:host([data-variant="danger"]) {
+  background-color: var(--mui-color-danger-subtle);
+  color: var(--mui-color-danger);
+}
+
+:host([data-variant="info"]) {
+  background-color: var(--mui-color-primary-subtle);
+  color: var(--mui-color-primary);
+}
+
+/* ----------------------------------------------------------------
+   Dot mode — collapses to a solid circle, ignores size padding
+   ---------------------------------------------------------------- */
+:host([data-dot]) {
+  width: 8px;
+  height: 8px;
+  min-width: unset;
+  padding: 0;
+  border-radius: var(--mui-radius-full);
+  border-color: transparent;
+}
+
+:host([data-dot][data-size="sm"]) { width: 6px;  height: 6px;  }
+:host([data-dot][data-size="md"]) { width: 8px;  height: 8px;  }
+:host([data-dot][data-size="lg"]) { width: 10px; height: 10px; }
+
+:host([data-dot][data-variant="default"]),
+:host([data-dot]:not([data-variant])) {
+  background-color: var(--mui-color-text-muted);
+}
+
+:host([data-dot][data-variant="primary"]) { background-color: var(--mui-color-primary); }
+:host([data-dot][data-variant="success"])  { background-color: var(--mui-color-success); }
+:host([data-dot][data-variant="warning"])  { background-color: var(--mui-color-warning); }
+:host([data-dot][data-variant="danger"])   { background-color: var(--mui-color-danger);  }
+:host([data-dot][data-variant="info"])     { background-color: var(--mui-color-primary); }
