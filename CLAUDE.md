@@ -80,16 +80,61 @@ projects/ui/
 └── tsconfig.spec.json    types: vitest/globals + @testing-library/jest-dom
 ```
 
+## Accessibility requirements (mandatory for every component)
+
+Every component MUST satisfy all of the following before it can be considered done.
+These are non-negotiable — no exceptions.
+
+### ARIA & roles
+- Use the correct ARIA role (prefer native HTML elements that carry implicit roles).
+- Interactive elements: set `aria-disabled` (not the HTML `disabled` attribute, which removes keyboard access).
+- Loading / busy states: set `aria-busy="true"` on the host.
+- Decorative-only children (icons, spinners): set `aria-hidden="true"`.
+- Meaningful standalone icons or images: require a `label` input that maps to `aria-label` + `role="img"`.
+- Dynamic status updates: use `role="status"` or `aria-live="polite"` where appropriate.
+
+### Keyboard
+- All interactive components must be fully operable by keyboard alone.
+- `Tab` / `Shift+Tab` — navigates to/from the component.
+- `Enter` / `Space` — activates buttons and button-like controls.
+- `Escape` — closes overlays, cancels edits.
+- Arrow keys — navigates within compound widgets (menus, tabs, sliders, etc.).
+- Never remove focus from a disabled element without setting `tabindex="-1"`.
+
+### Color contrast (WCAG AA — non-negotiable)
+- Normal text (< 18pt / < 14pt bold): **4.5:1 minimum** against its background.
+- Large text (≥ 18pt / ≥ 14pt bold): **3:1 minimum**.
+- UI component boundaries (focus rings, input borders): **3:1 minimum**.
+- Disabled / inactive elements: no contrast requirement (WCAG 1.4.3 exception).
+- Verify contrast using the actual `--mui-*` token values, not just the token name.
+- Do NOT rely on `opacity` alone to communicate disabled state (opacity degrades contrast).
+
+### Focus visibility
+- Visible focus ring on every interactive element via `:focus-visible`.
+- Focus ring must meet 3:1 contrast against adjacent colors.
+- Never use `outline: none` or `outline: 0` without a custom replacement focus indicator.
+
+### Touch targets
+- Every interactive element: `min-height: 44px` AND `min-width: 44px` (WCAG 2.5.5).
+
+### Motion
+- Every component that animates MUST include `@media (prefers-reduced-motion: reduce)` to stop or minimise motion.
+
+### Stories requirement
+- Every component **must** have an `Accessibility` story that demonstrates correct ARIA usage, and the story must have `parameters: { a11y: { disable: false } }`.
+
+---
+
 ## Per-component checklist (§4 of the plan)
 
 1. Scaffold: `mui-` selector, `OnPush`, standalone, `.ts/.html/.css/.types.ts`
 2. Signal inputs via `input()` / `input.required()` with `booleanAttribute`/`numberAttribute` transforms
 3. Signal outputs via `output()`, two-way state via `model()`
 4. CVA (forms only): `ControlValueAccessor` + `NG_VALUE_ACCESSOR` provider
-5. A11y: correct role, aria-*, keyboard (Tab/Enter/Esc/Arrows), 44px touch target
+5. A11y: satisfies every rule in the **Accessibility requirements** section above
 6. Security: no `[innerHTML]`, no `bypassSecurityTrust*`
 7. Styling: semantic `--mui-*` tokens only, `:host`-scoped, `part` attributes exposed
-8. Tests: all cases passing, ≥80% coverage
+8. Tests: all cases passing, ≥80% coverage — including at least one test per ARIA behaviour
 9. Stories: Default, variants, Interactive, Accessibility, MobilePreview
 10. MDX: add to group docs file
 11. Export from group `public-api.ts`
