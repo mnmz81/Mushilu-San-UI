@@ -1,0 +1,32 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+:host([data-color="primary"]) { color: var(--mui-color-primary); }
+:host([data-color="muted"])   { color: var(--mui-color-text-muted); }
+:host([data-color="danger"])  { color: var(--mui-color-danger); }
+:host([data-color="success"]) { color: var(--mui-color-success); }
+:host([data-color="warning"]) { color: var(--mui-color-warning); }
+
+:host svg {
+  animation: mui-spinner-spin 0.75s linear infinite;
+}
+
+@keyframes mui-spinner-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host svg {
+    animation: mui-spinner-pulse 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes mui-spinner-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
