@@ -1,0 +1,33 @@
+export type IconName =
+  | 'arrow-left' | 'arrow-right'
+  | 'bell'
+  | 'calendar'
+  | 'check' | 'check-circle'
+  | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up'
+  | 'copy'
+  | 'download'
+  | 'edit'
+  | 'external-link'
+  | 'eye' | 'eye-off'
+  | 'filter'
+  | 'heart'
+  | 'home'
+  | 'info'
+  | 'loading'
+  | 'mail'
+  | 'map-pin'
+  | 'menu'
+  | 'minus'
+  | 'more-horizontal' | 'more-vertical'
+  | 'phone'
+  | 'plus'
+  | 'search'
+  | 'settings'
+  | 'star'
+  | 'trash'
+  | 'upload'
+  | 'user'
+  | 'x';
+
+export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type IconColor = 'inherit' | 'primary' | 'muted' | 'danger' | 'success' | 'warning';
