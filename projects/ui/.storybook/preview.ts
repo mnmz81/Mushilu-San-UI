@@ -19,7 +19,6 @@ const preview: Preview = {
           { value: 'light', icon: 'sun', title: 'Light' },
           { value: 'dark', icon: 'moon', title: 'Dark' },
         ],
-        showName: true,
         dynamicTitle: true,
       },
     },
