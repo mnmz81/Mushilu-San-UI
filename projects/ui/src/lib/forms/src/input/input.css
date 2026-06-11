@@ -53,6 +53,22 @@
 
 :host::placeholder { color: var(--mui-color-text-muted); }
 
+/* Inside InputGroup: the group owns the border/radius/focus-ring */
+:host([data-in-group]) {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  height: 100%;
+  flex: 1 1 0%;
+  min-width: 0;
+  padding: 0 var(--_padding-x, var(--mui-space-3));
+  font-size: var(--_font-size, var(--mui-font-size-base));
+}
+
+:host([data-in-group]:focus-visible) {
+  box-shadow: none;
+}
+
 :host(:disabled) {
   color: var(--mui-color-text-disabled);
   background-color: var(--mui-color-surface);

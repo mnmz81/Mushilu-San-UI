@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--_padding-x, var(--mui-space-3));
+  font-size: var(--_font-size, var(--mui-font-size-base));
+  font-family: var(--mui-font-sans);
+  color: var(--mui-color-text-muted);
+  background-color: var(--mui-color-surface);
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+  /* Leading addon: separator on the right */
+  border-right: 1px solid var(--mui-color-input-border);
+}
+
+/* Trailing addon: separator on the left instead */
+:host(:last-child) {
+  border-right: none;
+  border-left: 1px solid var(--mui-color-input-border);
+}
