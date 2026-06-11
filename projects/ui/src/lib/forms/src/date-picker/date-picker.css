@@ -1,0 +1,79 @@
+:host {
+  display: inline-block;
+  position: relative;
+}
+
+/* ── Trigger ────────────────────────────────────────────── */
+.dp-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mui-space-2);
+  min-height: 44px;
+  height: 40px;
+  padding: 0 var(--mui-space-3);
+  min-width: 240px;
+  width: 100%;
+  background-color: var(--mui-color-surface-raised);
+  border: 1px solid var(--mui-color-input-border);
+  border-radius: var(--mui-radius-md);
+  font-size: var(--mui-font-size-base);
+  font-family: var(--mui-font-sans);
+  color: var(--mui-color-text);
+  cursor: pointer;
+  text-align: left;
+  touch-action: manipulation;
+  transition:
+    border-color var(--mui-duration-fast) var(--mui-easing-default),
+    box-shadow   var(--mui-duration-fast) var(--mui-easing-default);
+}
+
+.dp-trigger:hover { border-color: var(--mui-color-border-strong); }
+
+.dp-trigger:focus-visible {
+  outline: none;
+  border-color: var(--mui-color-focus-ring);
+  box-shadow:
+    0 0 0 var(--mui-focus-ring-width) var(--mui-color-bg),
+    0 0 0 calc(var(--mui-focus-ring-width) + var(--mui-focus-ring-offset)) var(--mui-color-focus-ring);
+}
+
+:host([data-open]) .dp-trigger {
+  border-color: var(--mui-color-focus-ring);
+  box-shadow:
+    0 0 0 var(--mui-focus-ring-width) var(--mui-color-bg),
+    0 0 0 calc(var(--mui-focus-ring-width) + var(--mui-focus-ring-offset)) var(--mui-color-focus-ring);
+}
+
+:host([data-disabled]) .dp-trigger {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dp-display {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Panel ──────────────────────────────────────────────── */
+.dp-panel {
+  position: absolute;
+  top: calc(100% + var(--mui-space-1));
+  left: 0;
+  z-index: var(--mui-z-modal);
+  box-shadow: var(--mui-shadow-3);
+  border-radius: var(--mui-radius-lg);
+  animation: dp-open var(--mui-duration-base) var(--mui-easing-out) both;
+}
+
+@keyframes dp-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dp-trigger { transition: none; }
+  .dp-panel   { animation: none; }
+}

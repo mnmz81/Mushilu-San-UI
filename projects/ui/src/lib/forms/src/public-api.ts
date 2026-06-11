@@ -31,3 +31,5 @@ export type { InputGroupSize } from './input-group/input-group.types';
 export { Slider } from './slider/slider';
 
 export { Calendar } from './calendar/calendar';
+
+export { DatePicker } from './date-picker/date-picker';
