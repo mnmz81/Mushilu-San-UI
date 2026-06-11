@@ -1,0 +1,6 @@
+<span class="item-icon" aria-hidden="true">
+  <ng-content select="[slot=icon],[muiIcon]" />
+</span>
+@if (expanded()) {
+  <span class="item-label">{{ label() }}</span>
+}

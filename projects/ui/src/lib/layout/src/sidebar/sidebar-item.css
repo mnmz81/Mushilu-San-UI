@@ -1,0 +1,70 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: var(--mui-space-3);
+  padding: 0 var(--mui-space-3);
+  min-height: 44px;
+  width: 100%;
+  border: none;
+  border-radius: var(--mui-radius-md);
+  background: transparent;
+  color: var(--mui-color-text-muted);
+  font-size: var(--mui-font-size-sm);
+  font-weight: var(--mui-font-weight-medium);
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    background-color var(--mui-duration-fast) var(--mui-easing-default),
+    color var(--mui-duration-fast) var(--mui-easing-default);
+  box-sizing: border-box;
+}
+
+:host(:hover) {
+  background-color: var(--mui-color-surface-raised);
+  color: var(--mui-color-text);
+}
+
+:host(:focus-visible) {
+  outline: none;
+  box-shadow:
+    0 0 0 var(--mui-focus-ring-width) var(--mui-color-bg),
+    0 0 0 calc(var(--mui-focus-ring-width) + var(--mui-focus-ring-offset)) var(--mui-color-focus-ring);
+}
+
+:host([data-active]) {
+  background-color: var(--mui-color-primary-subtle, color-mix(in srgb, var(--mui-color-primary) 12%, transparent));
+  color: var(--mui-color-primary);
+}
+
+:host(:not([data-expanded])) {
+  justify-content: center;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--mui-radius-md);
+}
+
+.item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.item-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host { transition: none; }
+}

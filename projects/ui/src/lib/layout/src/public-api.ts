@@ -17,3 +17,8 @@ export type { ScrollAreaOrientation } from './scroll-area/scroll-area';
 export { ResizablePanelGroup } from './resizable/resizable-panel-group';
 export { ResizablePanel } from './resizable/resizable-panel';
 export { ResizableHandle } from './resizable/resizable-handle';
+
+export { Sidebar } from './sidebar/sidebar';
+export { SidebarSection } from './sidebar/sidebar-section';
+export { SidebarItem } from './sidebar/sidebar-item';
+export { SidebarTrigger } from './sidebar/sidebar-trigger';

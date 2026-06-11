@@ -1,0 +1,22 @@
+:host {
+  --_sidebar-width:          240px;
+  --_sidebar-collapsed-width: 56px;
+
+  display: flex;
+  flex-direction: column;
+  width: var(--_sidebar-width);
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--mui-color-surface);
+  border-right: 1px solid var(--mui-color-border);
+  flex-shrink: 0;
+  transition: width var(--mui-duration-normal) var(--mui-easing-default);
+}
+
+:host([data-collapsed]) {
+  width: var(--_sidebar-collapsed-width);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host { transition: none; }
+}

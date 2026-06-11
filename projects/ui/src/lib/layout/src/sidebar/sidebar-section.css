@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mui-space-1);
+  padding: var(--mui-space-2) 0;
+}
+
+:host + :host {
+  border-top: 1px solid var(--mui-color-border);
+}
+
+.section-label {
+  padding: var(--mui-space-1) var(--mui-space-3);
+  font-size: var(--mui-font-size-xs);
+  font-weight: var(--mui-font-weight-semibold);
+  color: var(--mui-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+}
