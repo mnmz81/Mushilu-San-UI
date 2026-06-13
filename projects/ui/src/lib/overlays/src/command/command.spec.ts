@@ -1,5 +1,5 @@
 import { By } from '@angular/platform-browser';
-import { fireEvent, screen } from '@testing-library/angular';
+import { screen } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { renderTemplate } from '../../../../core/testing';

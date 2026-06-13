@@ -5,6 +5,13 @@ import { renderComponent, renderTemplate } from '../../../../core/testing';
 import { SwipeAction } from './swipe-action';
 import type { SwipeActionItem } from './swipe-action.types';
 
+interface SwipePrivate {
+  _railWidth: () => number;
+  onTouchStart: (e: { touches: { clientX: number }[] }) => void;
+  onTouchMove: (e: { touches: { clientX: number }[] }) => void;
+  onTouchEnd: () => void;
+}
+
 const rightActions: SwipeActionItem[] = [
   { key: 'delete', label: 'Delete', side: 'right', color: 'danger' },
   { key: 'archive', label: 'Archive', side: 'right', color: 'primary' },
@@ -163,7 +170,7 @@ describe('SwipeAction', () => {
       const { fixture, detectChanges } = await renderComponent(SwipeAction, {
         inputs: { actions: leftActions },
       });
-      const instance = fixture.componentInstance as any;
+      const instance = fixture.componentInstance as unknown as SwipePrivate;
       // jsdom has no layout engine: stub _railWidth so settle logic can snap
       instance._railWidth = () => 80;
 
@@ -179,7 +186,7 @@ describe('SwipeAction', () => {
       const { fixture, detectChanges } = await renderComponent(SwipeAction, {
         inputs: { actions: rightActions },
       });
-      const instance = fixture.componentInstance as any;
+      const instance = fixture.componentInstance as unknown as SwipePrivate;
       instance._railWidth = () => 80;
 
       instance.onTouchStart({ touches: [{ clientX: 0 }] });
@@ -194,7 +201,7 @@ describe('SwipeAction', () => {
       const { fixture, detectChanges } = await renderComponent(SwipeAction, {
         inputs: { actions: leftActions },
       });
-      const instance = fixture.componentInstance as any;
+      const instance = fixture.componentInstance as unknown as SwipePrivate;
       instance._railWidth = () => 80;
 
       instance.onTouchStart({ touches: [{ clientX: 0 }] });
@@ -209,7 +216,7 @@ describe('SwipeAction', () => {
       const { fixture, detectChanges } = await renderComponent(SwipeAction, {
         inputs: { actions: rightActions },
       });
-      const instance = fixture.componentInstance as any;
+      const instance = fixture.componentInstance as unknown as SwipePrivate;
 
       // No touchstart, so _dragging is false
       instance.onTouchMove({ touches: [{ clientX: 200 }] });
@@ -222,7 +229,7 @@ describe('SwipeAction', () => {
       const { fixture, detectChanges } = await renderComponent(SwipeAction, {
         inputs: { actions: leftActions },
       });
-      const instance = fixture.componentInstance as any;
+      const instance = fixture.componentInstance as unknown as SwipePrivate;
       instance._railWidth = () => 80;
 
       instance.onTouchStart({ touches: [{ clientX: 0 }] });
@@ -237,7 +244,7 @@ describe('SwipeAction', () => {
       const { fixture, detectChanges } = await renderComponent(SwipeAction, {
         inputs: { actions: leftActions },
       });
-      const instance = fixture.componentInstance as any;
+      const instance = fixture.componentInstance as unknown as SwipePrivate;
       instance._railWidth = () => 80;
 
       instance.onTouchStart({ touches: [{ clientX: 0 }] });
