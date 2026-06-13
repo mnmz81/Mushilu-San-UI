@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  ci:
+  ci-matrix:
     name: ci (node ${{ matrix.node || '.nvmrc' }})
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -99,6 +99,24 @@ jobs:
       - name: Build Storybook
         if: matrix.node == ''
         run: npm run storybook:build
+
+  # Single status gate required by branch protection — succeeds only when every
+  # matrix leg passes. GitHub cannot aggregate matrix jobs into one status on its
+  # own, so this job bridges the gap.
+  ci:
+    name: ci
+    needs: ci-matrix
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: All matrix legs passed
+        env:
+          MATRIX_RESULT: ${{ needs.ci-matrix.result }}
+        run: |
+          if [[ "$MATRIX_RESULT" != "success" ]]; then
+            echo "One or more matrix legs failed: $MATRIX_RESULT"
+            exit 1
+          fi
 
   # Blocks PRs that introduce dependencies with known CVEs or disallowed licenses.
   dependency-review:
