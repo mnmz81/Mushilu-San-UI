@@ -7,7 +7,6 @@ import {
   input,
   model,
   numberAttribute,
-  output,
 } from '@angular/core';
 
 import type { PaginationSize, PaginationVariant } from './pagination.types';
@@ -37,8 +36,6 @@ export class Pagination {
   variant = input<PaginationVariant>('default');
   ariaLabel = input<string>('Pagination');
 
-  readonly pageChange = output<number>();
-
   protected pages = computed(() => this.buildPages());
 
   protected get prevDisabled() {
@@ -51,7 +48,6 @@ export class Pagination {
   protected goTo(p: number): void {
     if (p < 1 || p > this.totalPages() || p === this.page()) return;
     this.page.set(p);
-    this.pageChange.emit(p);
   }
 
   protected onKeydown(event: KeyboardEvent, p: number | null): void {
