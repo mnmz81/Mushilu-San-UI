@@ -64,7 +64,6 @@ export class Combobox {
   placeholder = input('Select…');
   disabled = input(false, { transform: booleanAttribute });
 
-  readonly valueChange = output<string>();
   readonly opened = output<void>();
   readonly closed = output<void>();
 
@@ -86,7 +85,6 @@ export class Combobox {
     this.selectedLabel.set(label);
     this.open.set(false);
     this.search.set('');
-    this.valueChange.emit(val);
     this.closed.emit();
   }
 
