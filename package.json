@@ -68,7 +68,7 @@
     "@storybook/angular": "^10.4.6",
     "@testing-library/angular": "^19.4.1",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/user-event": "^14.6.1",
     "@vitest/coverage-v8": "^4.1.9",
     "angular-eslint": "22.0.0",
